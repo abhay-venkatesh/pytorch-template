@@ -1,4 +1,3 @@
-dataset: COCOStuff 
 trainer: COCOStuffTrainer 
 model: SegNet 
 epochs: 10

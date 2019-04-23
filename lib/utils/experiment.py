@@ -14,7 +14,7 @@ class Experiment:
     def _read_config_file(self, config_file):
         with open(config_file, 'r') as stream:
             try:
-                config = yaml.load(stream)
+                config = yaml.load(stream, Loader=yaml.SafeLoader)
                 return self._set_defaults(config)
             except yaml.YAMLError as exc:
                 print(exc)
