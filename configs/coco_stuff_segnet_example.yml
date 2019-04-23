@@ -1,3 +1,6 @@
 trainer: COCOStuffTrainer 
 model: SegNet 
 epochs: 10
+dataset path: D:\code\data\cocostuff\dataset
+learning rate: 0.001
+batch size: 5
