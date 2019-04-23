@@ -14,6 +14,8 @@ experiments/
   your_experiment_data_such_as_logs_and_checkpoints/
 ```
 
+I provide an example for the [COCO Stuff Dataset](https://github.com/nightrome/cocostuff). One can imitate this example to implement any project. 
+
 ## Setup
 ```bash
 conda create env
