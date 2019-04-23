@@ -11,6 +11,3 @@ class Trainer:
 
     def train(self):
         raise NotImplementedError
-
-    def validate(self):
-        raise NotImplementedError
