@@ -17,6 +17,8 @@ experiments/
 I provide an example for the [COCO Stuff Dataset](https://github.com/nightrome/cocostuff). One can imitate this example to implement any project. 
 
 ## Setup
+
+Install [Anaconda](https://anaconda.org/) and then run
 ```bash
 conda create env
 ```
