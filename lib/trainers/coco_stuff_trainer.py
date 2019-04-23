@@ -55,3 +55,5 @@ class COCOStuffTrainer(Trainer):
 
             mean_iou = mean(ious)
             self.logger.log("epoch", epoch, "mean_iou", mean_iou)
+
+            self.logger.graph()
