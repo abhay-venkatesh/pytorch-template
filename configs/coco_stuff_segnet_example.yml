@@ -1,0 +1,5 @@
+dataset: COCO 
+trainer: COCOStuff 
+model: SegNet 
+batch size: 100
+learning rate: 0.001
