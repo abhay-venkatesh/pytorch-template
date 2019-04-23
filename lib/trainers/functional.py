@@ -1,5 +1,5 @@
 import torch
-import torch.functional as F
+import torch.nn.functional as F
 
 
 def cross_entropy2d(output, target, weight=None):

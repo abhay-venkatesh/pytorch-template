@@ -9,3 +9,4 @@ dependencies:
 - matplotlib
 - pytorch
 - torchvision
+- scikit-image

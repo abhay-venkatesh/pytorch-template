@@ -18,8 +18,7 @@ class COCOStuff(data.Dataset):
         self.img_names = []
         self.bbox_indexes = []
 
-        ann_file_path = Path(self.root, "annotations",
-                             Path(self.root).stem + "2017.csv")
+        ann_file_path = Path(self.root, "annotations.csv")
         with open(ann_file_path, newline='') as ann_file:
             reader = csv.reader(ann_file, delimiter=',')
             for row in reader:
