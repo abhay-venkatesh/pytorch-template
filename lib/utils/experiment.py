@@ -7,6 +7,7 @@ import yaml
 class Experiment:
     def __init__(self, config_file):
         self.config_file = config_file
+        self.name = Path(self.config_file).stem
         self.config = self._read_config_file(config_file)
         self._build_paths()
 
@@ -20,7 +21,7 @@ class Experiment:
 
     def _build_paths(self):
         experiments_folder = Path("experiments")
-        self.folder = Path(experiments_folder, self.config["name"])
+        self.folder = Path(experiments_folder, self.name)
         self.checkpoints_folder = Path(self.folder, "checkpoints")
         self.stats_folder = Path(self.folder, "stats")
         for path in [self.checkpoints_folder, self.stats_folder]:
@@ -33,8 +34,8 @@ class Experiment:
             config["lr"] = 0.001
         if "momentum" not in config.keys():
             config["momentum"] = 0.9
-        if "batch_size" not in config.keys():
-            config["batch_size"] = 1
-        if "checkpoint_path" not in config.keys():
-            config["checkpoint_path"] = None
+        if "batch size" not in config.keys():
+            config["batch size"] = 1
+        if "checkpoint path" not in config.keys():
+            config["checkpoint path"] = None
         return config

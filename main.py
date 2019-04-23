@@ -1,6 +1,7 @@
-from lib.trainers import *  # noqa F401
 from lib.utils.experiment import Experiment
 import argparse
+import importlib
+import inflection
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -8,5 +9,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     experiment = Experiment(args.config_file)
-    Trainer = globals()[experiment.config["trainer"]]
+
+    trainer = importlib.import_module(("lib.trainers.{}").format(
+        inflection.underscore(experiment.config["trainer"])))
+    Trainer = getattr(trainer, experiment.config["trainer"])
     Trainer(experiment).train()
