@@ -1,4 +1,4 @@
-from lib.datasets.coco import COCOStuff
+from lib.datasets.coco_stuff import COCOStuff
 from lib.models.segnet import get_model
 from lib.trainers.functional import cross_entropy2d, get_iou
 from lib.trainers.trainer import Trainer
