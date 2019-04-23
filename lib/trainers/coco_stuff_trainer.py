@@ -22,8 +22,7 @@ class COCOStuffTrainer(Trainer):
         val_loader = DataLoader(
             dataset=valset, batch_size=self.experiment.config["batch size"])
 
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        model = get_model(n_classes=trainset.N_CLASSES).to(device)
+        model = get_model(n_classes=trainset.N_CLASSES).to(self.device)
         optimizer = torch.optim.Adam(
             model.parameters(), lr=self.experiment.config["learning rate"])
 
@@ -32,7 +31,7 @@ class COCOStuffTrainer(Trainer):
             model.train()
             total_loss = 0
             for X, Y in tqdm(train_loader):
-                X, Y = X.to(device), Y.to(device)
+                X, Y = X.to(self.device), Y.long().to(self.device)
                 Y_ = model(X)
                 loss = cross_entropy2d(Y_, Y)
                 loss.backward()
@@ -45,9 +44,9 @@ class COCOStuffTrainer(Trainer):
             ious = []
             with torch.no_grad():
                 for images, labels in val_loader:
-                    images = images.to(device)
+                    images = images.to(self.device)
                     labels = labels[0].long()
-                    labels = labels.to(device)
+                    labels = labels.to(self.device)
                     outputs = model(images)
                     _, predicted = torch.max(outputs.data, 1)
                     iou = get_iou(predicted, labels)

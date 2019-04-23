@@ -5,8 +5,8 @@ import torch
 class Trainer:
     def __init__(self, experiment):
         self.experiment = experiment
-        self.device = torch.device('cuda' if torch.cuda.
-                                   is_available() else 'cpu')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        print(self.device)
         self.logger = Logger
 
     def train(self):
