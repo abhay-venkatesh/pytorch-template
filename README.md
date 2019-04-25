@@ -29,3 +29,8 @@ Install [Anaconda](https://anaconda.org/) and then run
 ```bash
 conda create env
 ```
+
+## Run
+```bash
+python main.py configs/your_experiment_config.yml
+```
