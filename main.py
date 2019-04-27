@@ -13,7 +13,7 @@ if __name__ == "__main__":
     experiment = Experiment(args.config_file)
 
     # 3. Train!
-    trainer = importlib.import_module(("lib.trainers.{}").format(
+    trainer_module = importlib.import_module(("lib.trainers.{}").format(
         inflection.underscore(experiment.config["trainer"])))
-    Trainer = getattr(trainer, experiment.config["trainer"])
+    Trainer = getattr(trainer_module, experiment.config["trainer"])
     Trainer(experiment).train()
