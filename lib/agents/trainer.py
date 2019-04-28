@@ -12,6 +12,7 @@ class Trainer:
         self.logger = Logger(config["stats folder"])
 
     def run(self):
+        # Overload this method.
         raise NotImplementedError
 
     def _load_checkpoint(self, model):
