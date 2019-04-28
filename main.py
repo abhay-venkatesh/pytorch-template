@@ -12,8 +12,8 @@ if __name__ == "__main__":
     # 2. Setup the experiment
     experiment = Experiment(args.config_file)
 
-    # 3. Train!
-    trainer_module = importlib.import_module(("lib.trainers.{}").format(
-        inflection.underscore(experiment.config["trainer"])))
-    Trainer = getattr(trainer_module, experiment.config["trainer"])
-    Trainer(experiment).train()
+    # 3. Unleash agent!
+    agent_module = importlib.import_module(("lib.agents.{}").format(
+        inflection.underscore(experiment.config["agent"])))
+    Agent = getattr(agent_module, experiment.config["agent"])
+    Agent(experiment).run()

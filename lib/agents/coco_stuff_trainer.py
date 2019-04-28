@@ -1,7 +1,7 @@
 from lib.datasets.coco_stuff import COCOStuff
 from lib.models.segnet import get_model
-from lib.trainers.functional import cross_entropy2d, get_iou
-from lib.trainers.trainer import Trainer
+from lib.utils.functional import cross_entropy2d, get_iou
+from lib.agents.trainer import Trainer
 from pathlib import Path
 from statistics import mean
 from torch.utils.data import DataLoader
@@ -10,7 +10,7 @@ import torch
 
 
 class COCOStuffTrainer(Trainer):
-    def train(self):
+    def run(self):
         trainset = COCOStuff(
             Path(self.experiment.config["dataset path"], "train"))
         train_loader = DataLoader(

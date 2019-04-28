@@ -11,7 +11,7 @@ class Trainer:
                                    is_available() else 'cpu')
         self.logger = Logger(self.experiment.stats_folder)
 
-    def train(self):
+    def run(self):
         raise NotImplementedError
 
     def _load_checkpoint(self, model):
