@@ -1,4 +1,4 @@
-from lib.utils.experiment import Experiment
+from lib.utils.configurator import Configurator
 import argparse
 import importlib
 import inflection
@@ -10,10 +10,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # 2. Setup the experiment
-    experiment = Experiment(args.config_file)
+    config = Configurator.configure(args.config_file)
 
     # 3. Unleash agent!
     agent_module = importlib.import_module(("lib.agents.{}").format(
-        inflection.underscore(experiment.config["agent"])))
-    Agent = getattr(agent_module, experiment.config["agent"])
-    Agent(experiment).run()
+        inflection.underscore(config["agent"])))
+    Agent = getattr(agent_module, config["agent"])
+    Agent(config).run()

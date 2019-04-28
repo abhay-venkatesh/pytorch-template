@@ -11,22 +11,21 @@ import torch
 
 class COCOStuffTrainer(Trainer):
     def run(self):
-        trainset = COCOStuff(
-            Path(self.experiment.config["dataset path"], "train"))
+        trainset = COCOStuff(Path(self.config["dataset path"], "train"))
         train_loader = DataLoader(
             dataset=trainset,
-            batch_size=self.experiment.config["batch size"],
+            batch_size=self.config["batch size"],
             shuffle=True)
 
-        valset = COCOStuff(Path(self.experiment.config["dataset path"], "val"))
+        valset = COCOStuff(Path(self.config["dataset path"], "val"))
         val_loader = DataLoader(
-            dataset=valset, batch_size=self.experiment.config["batch size"])
+            dataset=valset, batch_size=self.config["batch size"])
 
         model = get_model(n_classes=trainset.N_CLASSES).to(self.device)
         optimizer = torch.optim.Adam(
-            model.parameters(), lr=self.experiment.config["learning rate"])
+            model.parameters(), lr=self.config["learning rate"])
 
-        for epoch in tqdm(range(self.experiment.config["epochs"])):
+        for epoch in tqdm(range(self.config["epochs"])):
 
             model.train()
             total_loss = 0
