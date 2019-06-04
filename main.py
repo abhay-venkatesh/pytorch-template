@@ -6,7 +6,7 @@ import inflection
 if __name__ == "__main__":
     # 1. Parse the argument
     parser = argparse.ArgumentParser()
-    parser.add_argument("config_file", help="path to config file")
+    parser.add_argument("config_file")
     args = parser.parse_args()
 
     # 2. Setup the experiment
